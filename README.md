@@ -1,6 +1,6 @@
 # OpenCart Manual Testing Project
 
-Welcome to my Manual Testing project for the [OpenCart](https://www.opencart.com/) e-commerce platform. This project demonstrates my ability to perform end-to-end manual testing, bug reporting, and test artifact management.
+Welcome to my Manual Testing project for the [OpenCart]([(https://demo.opencart.com/)] e-commerce platform. This project demonstrates my ability to perform end-to-end manual testing, bug reporting, and test artifact management.
 
 ## 🚀 Project Overview
 This repository contains a comprehensive test suite for the OpenCart demo website, covering critical user flows including registration, login, shopping cart management, and security features.
