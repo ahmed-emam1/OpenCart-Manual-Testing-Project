@@ -1,0 +1,221 @@
+website,openCart,,,,,,,,
+Module,Registration Page,,,,,,,,
+Tester,Ahmed Emam,,,,,,,,
+TC ID,Title,Description,Pre-conditions,Test Steps ,Test Data,priority,Expected Result,Actual Result,Status
+TC_REG_001,Successful User Registration with Valid Data,"Verify that a new user can create an account successfully when providing 
+all valid and mandatory data", User is on the 'Register Account' page and not logged in,"1. Enter a valid First Name and Last Name.
+2. Enter a unique, valid Email address.
+3. Enter a strong Password.
+4. Check the ""Privacy Policy"" checkbox.
+5. Click on the ""Continue"" button","First Name: Ahmed
+Last Name: Mahmoud
+Email: ahmed.test2026@gmail.com 
+Password: Pass@123",High," The account is created successfully. User is redirected to the
+ ""Account Success"" page, and a confirmation message
+ ""Your Account Has Been Created!"" is displayed.
+","The account is created successfully, and a confirmation message
+ ""Your Account Has Been Created!"" is displayed.
+",pass
+TC_REG_002, Registration with Empty Mandatory Fields,"Verify that the system prevents registration and displays error messages when
+ mandatory fields are left empty", User is on the 'Register Account' page,"1. Leave all input fields empty.
+2. Check the ""Privacy Policy"" checkbox.
+3. Click on the ""Continue"" button.", None (All fields empty),High,"Registration fails. The system displays red validation error messages
+below every mandatory field ","Registration fails. The system displays red validation error messages
+below every mandatory field",pass
+TC_REG_003,Registration with Invalid Email Format," Verify that the system validates the email format and rejects invalid inputs 
+(missing '@' or domain).
+", User is on the 'Register Account' page,"1. Fill all fields with valid data.
+2. In the Email field, enter a value without '@'.
+3. Check ""Privacy Policy"" and click ""Continue"".",email: ahmed_gmail.com, Medium,"Registration fails. system validation message appears stating
+ ""E-Mail Address does not appear to be valid!"".
+","Registration fail, system shows ""please include an '@' in the email address""",pass
+TC_REG_004,Registration with Numbers in Last Name,"Verify that the Last Name field accepts only alphabetic characters and rejects 
+numeric inputs.",User is on the 'Register Account' page.,"1. Fill all fields with valid data.
+2. In the Last Name field, enter text containing numbers.
+3. Check ""Privacy Policy"" and click ""Continue"". ",Last Name = Mahmoud1234, Medium,"Registration fails. The system should display a validation error 
+message indicating that numbers are not allowed in the name field","The system accepted the numeric characters in the Last Name field and the
+ account was created successfully without any error message.",fail
+TC_REG_005,Password Field Exceeding Maximum Character Limit,"Verify that the password field rejects inputs that exceed the maximum allowed boundary 
+(more than 20 characters).",User is on the 'Register Account' page.,"1. Fill all fields with valid data.
+2. Enter a very long password (21 characters or more) in both Password
+3. Check ""Privacy Policy"" and click ""Continue"".",Password = Aa12345678901234567890 , Medium,"Registration fails. An error message appears below the field stating that
+ the password must be between 4 and 20 characters.","The system accepted the long password (22 characters) and created 
+the account successfully without any error message.",fail
+TC_REG_006,Password Field Below Minimum Character Limit,"Verify that the password field rejects inputs below the minimum allowed boundary length
+ (less than 4 characters).",User is on the 'Register Account' page.,"1. Fill First Name, Last Name, and Email with valid data.
+2. Enter a short password in the Password field.
+3. Check the ""Privacy Policy"" checkbox.
+4. Click on the ""Continue"" button.",Password = 123,High,"Registration fails. An error message appears below the field:
+ ""Password must be between 4 and 20 characters"".","The system rejected the password and displayed the error message: 
+""Password must be between 4 and 20 characters""",pass
+TC_REG_007,Password Field with Only Spaces,Verify that the password field does not accept blank spaces as a valid password.,User is on the 'Register Account' page.,"1. Fill First Name, Last Name, and Email with valid data.
+2. Press the spacebar 5 times in the Password field.
+3. Check the ""Privacy Policy"" checkbox.
+4. Click on the ""Continue"" button.",Password =       (5 spaces),High,"Registration fails. The system should treat spaces as empty input and 
+display the error message: ""Password must be between 4 and 20 characters!"".","The system rejected the password and displayed the error message: 
+""Password must be between 4 and 20 characters""",pass
+TC_REG_008,Registration Without Accepting Privacy Policy,Verify that the system blocks registration if the user does not agree to the Privacy Policy.,User is on the 'Register Account' page.,"1. Fill all input fields (First Name, Last Name, Email, Password) with valid data.
+2. Leave the ""Privacy Policy"" checkbox unchecked.
+3. Click on the ""Continue"" button.",None,High,"Registration fails. A prominent warning message appears at the top:
+ ""Warning: You must agree to the Privacy Policy!""","Registration fails, system shows the warning (""You must agree to privacy policy"")",pass
+TC_REG_009, First Name Field Exceeding Maximum Character Limit,"Verify that the First Name field rejects inputs that exceed the maximum 
+allowed boundary (32 characters).",User is on the 'Register Account' page.,"1. Enter a name longer than 32 characters in the First Name field.
+2. Fill all other fields with valid data.
+3. Check the ""Privacy Policy"" checkbox.
+4. Click on the ""Continue"" button.","First Name = AhmedAhmedAhmedAhmedAhmedAhm
+edAhmedAhmed (40 chars)",Low," Registration fails. An error message appears below the field: ""First Name must
+ be between 1 and 32 characters!"".","Registration fails, system shows the error message ""First Name must
+ be between 1 and 32 characters!"".""",pass
+TC_REG_010,Registration with Numbers in First Name,"Verify that the First Name field accepts only alphabetic characters and rejects 
+numeric inputs.",User is on the 'Register Account' page.,"1. In the First Name field, enter text containing numbers.
+2. Fill all other fields with valid data.
+3. Check the ""Privacy Policy"" checkbox.
+4. Click on the ""Continue"" button.",First Name = Ahmed123, Medium,"Registration fails. The system should display a validation error message
+ indicating that numbers are not allowed.","The system accepted the numeric characters in the First Name field and the
+ account was created successfully without any error message.",fail
+TC_REG_011,Registration with Already Existing Email,"Verify that the system prevents creating a duplicate account with an email that is
+ already registered.","User is on the 'Register Account' page.
+ An account with the email ahmed.exists@gmail.com already exists.","1. Enter a valid First Name and Last Name.
+2. Enter the already registered email in the Email field.
+3. Enter a valid Password.
+4. Check the ""Privacy Policy"" checkbox.
+5. Click on the ""Continue"" button.","Email = ahmed.test2026@gmail.com 
+ Password = Pass@123",High,"Registration fails. A warning message appears at the top of the page:
+ ""Warning: E-Mail Address is already registered!"".","Registration fails. A warning message appears at the top of the page:
+ ""Warning: E-Mail Address is already registered!"".",pass
+TC_REG_012,Cancel Registration via Header Navigation,"Verify that clicking away or returning to the homepage cancels the process and does not 
+save any entered data.",User is on the 'Register Account' page.,"1. Fill all fields with valid data.
+2. Instead of clicking Continue, click on the top logo or ""Home"" link.
+3. Navigate back to the 'Register Account' page.",None,Low,"The user is redirected to the home page. When returning to the register page,
+ all fields should be completely blank (data was not saved).",registeration data was not saved,pass
+Module,Login Page,,,,,,,,
+TC_LOG_001,Successful Login with Valid Credentials, Verify that a registered user can log in successfully using correct email and password.,User is on the 'Login' page and has a registered account.,"1. Enter the valid registered Email address.
+2. Enter the correct Password.
+3. Click on the ""Login"" button.",Valid email and password that already registered account,High,"User is successfully logged in and redirected to the ""My Account"" dashboard
+ page.","User is successfully logged in and redirected to the ""My Account"" page.",pass
+TC_LOG_002,Login with Invalid Password,Verify that the system blocks login and displays an error message when entering a wrong password.,User is on the 'Login' page.,"1. Enter a valid registered Email address.
+2. Enter an incorrect Password.
+3. Click on the ""Login"" button.",Correct email and wrog password,High,"Login fails. User remains on the login page, and a warning message appears: ""Warning: No match for E-Mail Address and/or Password."".","Login fails. User remains on the login page, and a warning message appears: ""Warning: No match for E-Mail Address and/or Password."".",pass
+TC_LOG_003,Login with Unregistered Email,Verify that the system blocks login when using an unregistered email.,User is on the 'Login' page.,"1. Enter an unregistered/wrong Email address.
+2. Enter any Password.
+3. Click on the ""Login"" button.","Email = notfound_user@gmail.com 
+Password = Pass@1234",High,"Login fails. The system displays the warning message: ""Warning: No match for E-Mail Address and/or Password."".","Login fails. The system displays the warning message: ""Warning: No match for E-Mail Address and/or Password."".",pass
+TC_LOG_004,Login with Empty Fields,Verify that the system prevents login when email and password fields are empty.,User is on the 'Login' page.,"1. Leave both Email and Password fields completely empty.
+2. Click on the ""Login"" button.",None,High,"Login fails. The system displays the  warning message: ""Warning: No match for E-Mail Address and/or Password."".","Login fails. The system displays the  warning message: ""Warning: No match for E-Mail Address and/or Password."".",pass
+TC_LOG_005,Forgotten Password' Link Functionality,Verify that clicking 'Forgotten Password' redirects the user to the password recovery page.,User is on the 'Login' page.,"1. Click on the ""Forgotten Password"" link below the password field.",None, Medium,"User is successfully redirected to the ""Forgot Your Password?"" page where they can enter their email to reset it.","User is successfully redirected to the ""Forgot Your Password?"" page where they can enter their email to reset it.",pass
+TC_LOG_006,Verify Password Field Security,Verify that the characters entered in the password field (hidden as dots) for security.,User is on the 'Login' page.,"1. Type any characters inside the Password field.
+2. Observe how the characters are displayed on the screen.",Password123,High,The entered text must be shown as bullet points •••••••• and not visible as plain text.,The entered text shown as bullet points •••••••• and not visible as plain text.,pass
+TC_LOG_007,Verify Case Sensitivity of Password Field,Verify that the Password field is case-sensitive and rejects the correct password if the letter casing is wrong.,User is on the 'Login' page. User has an account with password Pass@1234.,"1. Enter the valid registered Email address.
+2. Enter the password with altered casing (pass@1234 all lowercase or PASS@1234 all uppercase).
+3. Click on the ""Login"" button.",pass@1234, Medium, Login fails. The system rejects the password due to incorrect case sensitivity and displays the standard warning message.,"Login fails. The system displays the  warning message: ""Warning: No match for E-Mail Address and/or Password."".",pass
+TC_LOG_008,Verify Account Lockout after Multiple Failed Login Attempts,Verify that the system temporarily locks the account or shows a security warning after multiple consecutive failed login attempts (5 times).,User is on the 'Login' page.,"1. Enter a valid registered Email.
+2. Enter an incorrect Password.
+3. Click ""Login"".
+4. Repeat steps 2 and 3 for 5 consecutive times",Enter wrong passwords 5 times.,High," On the 5th or 6th attempt, the system should block further attempts temporarily and display a message like: ""Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour."" ","The system locks the account after an excessively high number of failed attempts, displaying a ""try again in 1 hour"" message. However, it does not lock the account after the standard 5 attempts",fail
+TC_LOG_009,Verify Session Destruction after Logout via Browser Back Button,"Verify that once a user logs out, they cannot access the secure dashboard page again by clicking the browser's ""Back"" button.","User is logged in and currently on the ""My Account"" dashboard page.","1. Click on the ""Logout"" button to log out of the system.
+2. Once redirected to the logout success page, click on the browser's Back arrow button.",None,High,The user should NOT be allowed back into the dashboard. The system should either keep them on the login/home page or redirect them to the login page with a session expired message.,"The system successfully redirected back to the ""My Account"" dashboard page and displayed private account data after clicking the browser back button post-logout.",fail
+Module,Search Page,,,,,,,,
+TC_E-COMM_001,Search with Valid Existing Product Name,Verify that searching for an exact product name that exists in the database returns relevant results.,User is on any page containing the search bar.,"1. Type a valid existing product name in the search bar ( MacBook or iPhone).
+2. Click on the search icon or press Enter.",Search Term = MacBook,High," The system redirects to the search results page displaying the product (MacBook) with its image, price, and details."," The system redirects to the search results page displayed all matching (MacBook) product with their correct image, price, and details.",pass
+TC_E-COMM_002,Search with Non-Existing Product Name,"Verify that searching for a product that does not exist returns a ""No results"" message.",User is on any page containing the search bar.,"1. Type a non-existing product name in the search bar.
+2. Click on the search icon or press Enter.",Search Term = SamsungS25Ultra,High,"The system displays a clear message stating: ""There is no product that matches the search criteria."".","System display:  ""There is no product that matches the search criteria."".",pass
+TC_E-COMM_003,Search using Partial Product Name (Keyword),Verify that searching with a partial word or keyword returns all products containing that keyword., User is on any page containing the search bar.,"1. Type a partial keyword in the search bar (Mac or phone).
+2. Click on the search icon or press Enter.",Term = Mac, Medium,"The system returns all products containing the word ""Mac"" (like MacBook, MacBook Air....).","system returns all products containing the word ""Mac"" (like MacBook, MacBook Air).",pass
+TC_E-COMM_004,Search with Empty Input Field,Verify the system behavior when clicking the search button while the input field is completely empty.,User is on any page containing the search bar.,"1. Leave the search input field empty.
+2. Click on the search icon.",None, Medium,"*  The system should either remain on the page or redirect to an empty search page showing ""There is no product that matches the search criteria."".","System display:  ""There is no product that matches the search criteria."".",pass
+TC_E-COMM_005,Verify Case Insensitivity of Search Bar, Verify that the search is case-insensitive and returns the same results whether typed in uppercase or lowercase.,User is on any page containing the search bar.,"1. Type the product name in Upper case ( MACBOOK).
+2. Click on the search icon and observe results.",Search Term = MACBOOK,Low," The system successfully returns the MacBook product, proving the search is case-insensitive.",system successfully returns the MacBook product.,pass
+TC_E-COMM_006,Search with Special Characters, Verify that searching with special characters or scripts doesn't break the system layout or database.,User is on any page containing the search bar.,"1. Enter special characters in the search bar.
+2. Click on the search icon.",Search Term = #####,High," The system handles the input gracefully, and displays ""There is no product that matches the search criteria."" without any system crash.","System display:  ""There is no product that matches the search criteria."" without any system crash..",pass
+TC_E-COMM_007,Search using Product Model or Description Keywords,"Verify that the system can find products not just by name, but also by their model.",User is on any page containing the search bar.,"1. Check a product model from the site (Product 15 for MacBook) and type it in the search bar.
+2. Click on the search icon.",Search Term = Product 15,Low, The system finds and displays the corresponding product.,system successfully finds and displays the corresponding product with all details.,pass
+Module,Shopping Cart,,,,,,,,
+TC_CRT_001,Add Product to Shopping Cart from Search Results," Verify that clicking the ""Add to Cart"" button on a product from the search results page successfully adds the item to the cart.", User has searched for a product and is on the search results page.,"1. Hover over or view the searched product (MacBook).
+2. Click on the ""Add to Cart"" button.
+3. Observe the success message and the cart total counter at the top.",Product = MacBook,High,"A success message appears: ""Success: You have added MacBook to your shopping cart!"". The cart icon/total updates to reflect 1 item.","system added product to shopping cart and shows: ""Success: you have added Macbock to your shopping cart!
+ The cart icon updates to reflect 1 item and their price",pass
+TC_CRT_002,Update Product Quantity from Shopping Cart Page,Verify that updating the quantity of a product inside the shopping cart recalculates the total price correctly.,User has at least 1 item in the shopping cart and is on the 'Shopping Cart' page.,"1. Navigate to the Shopping Cart page.
+2. Clear the current quantity and change it to 2.
+3. Click the blue ""Update"" (refresh) button next to the quantity field.",Quantity = 2,High,The quantity updates successfully. The sub-total and total prices are recalculated correctly (multiplied by 2).,"System successfully updates quantity and  display:  ""Success: you have modified your shoping cart"".",pass
+TC_CRT_003,Remove Product from Shopping Cart,"Verify that clicking the ""Remove"" button deletes the product from the cart and updates the total.", User has an item in the shopping cart and is on the 'Shopping Cart' page.,"1. Navigate to the Shopping Cart page.
+2. Click on the red ""Remove"" (X) button next to the product.",None,High,"The product is removed from the cart. The page updates to show an empty cart message: ""Your shopping cart is empty!"".","System successfully removed product from the cart and show an empty cart message: ""Your shopping cart is empty!"".",pass
+TC_CRT_004, Add Product with Invalid Quantity (Zero/Negative),Verify that the system prevents setting a product quantity to 0 or negative numbers in the cart.,User is on the 'Shopping Cart' page with 1 item.,"1. Change the quantity field to 0 or -1.
+2. Click on the ""Update"" button.",Quantity = 0, Medium, The system should either reject the input with an error message or automatically remove the item (if 0) / reset to 1. It must not show a negative price.,"In case of (0): The system keeps the existing product in the cart without removing or modifying it (adding 0 to current qty), but it incorrectly displays the success message: ""Success: You have added the product to shoping cart"".
+In case of Negative (-): The system treats the negative input as a deletion command, completely removing the product and clearing the cart, yet it still erroneously displays the same successful addition message.  ""Success: You have added the product to shoping cart"".",fail
+TC_CRT_005,Verify Adding Exceedingly Large Quantity to Cart,Verify how the system handles a request to add a massive quantity of a product (999999).,User is on the product or shopping cart page.,"1. Change the product quantity field to a very large number like 999999.
+2. Click ""Update"" or ""Add to Cart"".",Quantity = 999999, Medium," The system should either restrict the input to the actual available stock or show an error message: ""Products marked with are not available in the desired quantity!"". It must not crash or display a broken price layout.","The system accepted the Large quantity (9999) on the Shopping Cart page, updated the total price, and incorrectly displayed a success message.
+ The stock validation only triggered later upon clicking ""Checkout"", blocking the user there instead of checking the stock instantly during the quantity update and show the warning message "" Products marked with *** are not available in the desired quantity or not in stock!"" on the Shopping Cart page.",fail
+TC_CRT_006,Verify Tax and Total Price Calculation with Multiple Items,"Verify that when adding different types of products, the sub-total, taxes, and final total are summed up correctly.",Shopping cart contains more than one distinct product.,"1. Add Product A ( iPhone) and Product B (MacBook) to the cart.
+2. Go to the Shopping Cart page and check the price breakdown table at the bottom.",Multiple items in cart.,High, The Sub-Total must equal (Price A + Price B). Eco Tax or VAT and the Final Total must be mathematically correct.,"Calculation Error: The system miscalculates the Sub-Total display.
+* Expected Sub-Total: $123.20 + $2,000.00 = $2,123.20
+* Actual Sub-Total Displayed: $2,101.00
+The system incorrectly displays a lower Sub-Total, which causes the subsequent Eco Tax ($2.00) and VAT ($20.20) additions to be logically and mathematically flawed based on the final total of $2,123.20",fail
+TC_CRT_007,Verify Removing Item via Header Cart Dropdown,Verify that users can remove items from the mini-cart dropdown directly without opening the main shopping cart page.,User has at least one item in the cart and is on the Home page.,"1. Click on the black cart button/dropdown in the top right header.
+2. Click on the Remove button ""X"" next to the product inside the dropdown.",None, Medium,"The item is instantly removed, the dropdown updates to ""Your shopping cart is empty!"", and the main cart total in the header updates to 0 items.","System successfully removed product from the cart after clicking on remove button and show ""your shoping cart is empty""  and the main cart total in the header updates to 0 items.",pass
+TC_CRT_008,Verify Error Handling when Applying Empty Coupon/Voucher," Verify that clicking ""Apply"" on coupon or voucher fields without entering a code triggers an error message.",User is on the 'Shopping Cart' page with items added.,"1. Click on ""Use Coupon Code"" or ""Use Gift Certificate"" to expand the section.
+2. Leave the input box completely blank.
+3. Click the ""Apply Coupon"" / ""Apply Voucher"" button.",Empty Input., Medium,"The system rejects the empty submission and displays a red warning banner: ""Warning: Please enter a coupon code!"" or similar.","The system accepts empty inputs in both Coupon and Gift Certificate fields.
+* Coupon Section: Submitting a empty field incorrectly triggers: ""Success: Your coupon discount has been removed!"".
+* Gift Certificate Section: Submitting a empty field incorrectly triggers: ""Success: Your gift certificate discount has been removed!"".
+The system fails to validate empty fields and treats them as a deletion command instead of displaying a proper warning message.",fail
+TC_CRT_009,Verify Cart Persistence after Logout and Login,Verify that items added to the cart by a logged-in user remain in the cart after logging out and logging back in., User is logged in and has added an item to the cart.,"1. Add any item to the cart.
+2. Click ""Logout"".
+3. Log back into the same account.
+4. Check the shopping cart status.",None, Medium,The item should still be saved in the cart after logging back in., item  still  saved in the cart after logging back in.,pass
+Module,Checkout,,,,,,,,
+TC_CHK_001,"Verify ""Checkout"" Button Navigation",Verify that clicking the Checkout button redirects the user to the checkout/payment steps page., User has items in the cart and is on the 'Shopping Cart' page.,"Click on the ""Checkout"" button.",None,High, The user is successfully redirected to the 'Checkout' page to fill in shipping and payment details.,User  successfully redirected to the 'Checkout' page to fill in shipping and payment details.,pass
+TC_CHK_002,Verify Access to Checkout Page with an Empty Cart,Verify that the system prevents the user from accessing the checkout page if their shopping cart is completely empty.,User is logged in and the shopping cart is empty.,"Try to click on the ""Checkout"" link in the top header or type the checkout URL directly.",None,High,"The system blocks navigation, redirects the user to an empty cart page, and displays a message: ""Your shopping cart is empty!"".","The system blocks navigation, redirects the user to an empty cart page, and displays a message: ""Your shopping cart is empty!"".",pass
+TC_CHK_003,Verify Adding New Address Details with Valid Data,Verify that the user can successfully fill in and save new address details during the first step of checkout.,"User has items in the cart and has clicked ""Checkout"".","1. Select ""I want to use a new address"".
+2. Fill in all required fields (First Name, Last Name, Address 1, City, Post Code, Country, Region).
+3. Click ""Continue"".",Standard valid address details.,High,"The data is accepted without errors, and Step 2 (Shipping Method) expands automatically.","data accepted without errors, and Shipping Method expands automatically.",pass
+TC_CHK_004,Verify Validation of Mandatory Fields in Shipping address Details,Verify that leaving required address fields empty blocks the checkout process and displays error messages., User is on Step 1 of the checkout process.,"1. Clear the ""City"" and ""Address 1"" fields.
+2. Click ""Continue""",Empty mandatory fields.,High,"The system blocks the user and displays red warning messages under the empty fields: ""First Name must be between 1 and 32 characters!. or similar.",system blocks the user and displays red warning messages under the all  empty mandatory fields,pass
+TC_CHK_005,Verify Selection of Existing Delivery Address and Shipping Method,Verify that selecting an existing address and picking a shipping method works correctly.,"User is on Step 2 & 3 of the checkout process.
+","1. Select ""I want to use an existing address"".
+2. Click ""Continue"" to go to Delivery Method.
+3. Choose the available shipping option (Flat Shipping Rate).
+4. Click ""Continue"".", Default selections.,High,"The choices are saved, and the system proceeds to Step 4 (Payment Method).","The choices are saved, and the system proceeds to Step 4 (Payment Method).",pass
+TC_CHK_006,Verify Checkout Blocks if Terms & Conditions are Not Accepted,"Verify that the user cannot proceed to the final step unless they check the ""I have read and agree to the Terms & Conditions"" checkbox.",User is on Step 4 (Payment Method).,"1. Select the available payment method (Cash On Delivery).
+2. Leave the ""Terms & Conditions"" checkbox unchecked.
+3. Click ""Continue"".",Unchecked Terms box.,High,"Checkout is blocked. A warning banner appears: ""Warning: You must agree to the Terms & Conditions!"".",The Terms & coditions privacy policy checkbox is not included in the checkout page,Not Applicaple
+TC_CHK_007,Verify Correct Math/Calculation in Order Summary, Verify that the final order summary displays the correct math: Total price.,User is on the final step (Confirm Order).,"Review the product price, quantity, sub-total, flat shipping rate, and final total displayed in the table.",None,High, The mathematical calculation must be 100% correct. , The mathematical calculation 100% correct.,pass
+TC_CHK_008,Verify Successful Order Placement,"Verify that clicking ""Confirm Order"" successfully places the order and redirects to the success screen.", User is on the final Step and all details are correct.,"Click on the ""Confirm Order"" button.",None,High,"The order is placed. The user is redirected to the success page displaying: ""Your Order Has Been Processed!"".","The system successfully processed the checkout request upon clicking ""confirm order"", redirected to the success page displaying: ""Your Order Has Been Placed!"" and completed the transaction without errors.",pass
+TC_CHK_009,Verify Order Appears in User's Order History," Verify that a successfully placed order is recorded and visible in the user's account ""Order History"".", User has just successfully placed an order.,"1. Navigate to the ""My Account"" page.
+2. Click on ""Order History"".",None, Medium,"The newly created order appears in the list with the correct Date, Order ID, Status (Pending), and Total price.","orders successfully appears in the order history list with the correct Date, Order ID, Status (Pending), and Total price.",pass
+TC_CHK_010,Verify Cart Content Integrity if User Deserts Checkout,"Verify that if a user leaves the checkout halfway to modify the cart, their items are preserved correctly.",User is inside the checkout page.,"1. Abandon checkout by clicking back on the ""Shopping Cart"" link in the header.
+2. Observe the items in the cart.",None, Medium,"The shopping cart page opens, showing the exact same items and quantities the user had before entering checkout.",Navigating back to the shopping cart from the checkout page retains all previously added products in the cart without losing any data or clearing the session,pass
+TC_CHK_011,Verify Behavior of non-registered users Checkout if Disabled/Enabled, Verify whether the system allows a non-registered user to checkout as a guest or forces registration.,"User is not logged in, has items in the cart, and clicks ""Checkout"".","1. Add an item to the cart as a non-registered user.
+2. Click ""Checkout"".
+",None, Medium,"If Guest Checkout is allowed, the option should be selectable. If disabled, the system must only allow registration/login.","The system restricts the checkout process to registered users only. The non-registered users checkout option is disabled per current platform configuration, and the system correctly forces the user to either login or register to proceed.",pass
+Module,Secondary Features & Account Functions,,,,,,,,
+TC_SEC_001,Verify Adding Product to Wishlist for Registered User, Verify that a logged-in user can add a product to their wishlist and that the wishlist counter updates.,User is logged in and on the Home page or Search results.,"1. Click on the ""Heart"" icon (Add to Wishlist) on any product.
+2. Observe the success message and check the ""Wish List"" link at the top.", Product = iPhone, Medium,"A success message appears, and the item is saved inside the user's Wishlist page."," System successfilly saved item inside the user's Wishlist page, success message appears,",pass
+TC_SEC_002,Verify Wishlist Restriction for non-registered users,Verify that the system prevents non-registered users from saving items to a permanent wishlist.,User is not logged in.,"Click on the ""Heart"" icon (Add to Wishlist) on any product.",None, Medium,"The system does not save the item permanently instead, it displays a warning message stating that you must login or create an account to save items to your wishlist.",The system correctly  restricts the Wishlist feature to registered users only. Attempting to add a product to the wishlist as a un-registered user triggers a prompt notification stating that logging in or registering is required.,pass
+TC_SEC_003,Verify Product Comparison Feature,Verify that adding multiple products to the comparison list displays them side-by-side in a comparative table.,User is on the product listing or search page.,"1. Click the ""Compare this Product"" button on Product A (MacBook).
+2. Click the same button on Product B (MacBook Air).
+3. Click on the ""Product Compare"" link in the success banner.",Compare MacBook and MacBook Air.,Low,"The system redirects to the Product Comparison page, displaying a structured table comparing prices, models, brands, and ratings."," System successfully redirects to the Product Comparison page, displaying a structured table comparing prices, models, brands, and ratings.",pass
+TC_SEC_004,Verify Submitting a Product Review with Valid Data,Verify that a user can successfully fill in and submit a rating and text review on a product page.,User is on a specific product detail page.,"1. Click on the ""Reviews"" tab.
+2. Enter a valid name .
+3. Enter a review text.
+4. Select a rating 
+5. Click the ""Continue"" button.","Ahmed | Text = This product is absolutely amazing, highly recommended! | Rating = 5", Medium,"A success message appears stating: ""Thank you for your review. It has been submitted to the webmaster for approval."".","clicking the ""continue"" button after filling out the product review from triggers NO ACTION. The system freezes fails to submit the review, and display no success or validation error messages.",fail
+TC_SEC_005,Verify Review Rejection for Short Text Input,Verify that the system rejects a product review if the text length is below the required boundary.,User is on a product review tab.,"1. Enter a valid name.
+2. Enter a very short review text 
+3. Select a rating and click ""Continue"".",Text = Good product,Low,"The submission is blocked, and an error message appears: ""Warning: Review Text must be between 25 and 1000 characters!"".","Cannot verfiy text length validation because the ""continue"" button is non-functional and fails to submit the review from entirely.",Not Applicaple
+TC_SEC_006,Verify Submitting a Product Return Request,Verify that a user can submit a product return form by filling in order details and reason for return.,"User navigates to the ""Returns"" page from the footer link.","1. Fill in mandatory fields.
+2. Select a ""Reason for Return"".
+3. Click ""Submit"".", Random valid data + choosing standard reason,Low," The return request is submitted successfully, and the system displays a success page thanking the user.","clicking the ""submit"" button after filling out all required fildes in the product return form triggers NO ACTION. The page freezes fails to submit the request, and displays no success confirmation or validation error messages.",fail
+TC_SEC_007,Verify Newsletter Subscription Toggle via Account Dashboard,Verify that changing the newsletter subscription status saves correctly in the database.,"User is logged in and on the ""My Account"" dashboard.","1. Click on ""Subscribe / unsubscribe to newsletter"".
+2. Select ""Yes"" and click ""Continue"".",Subscription = Yes,Low,"A success message appears: ""Success: Your newsletter subscription has been successfully updated!"".","clicking  ""continue"" button after updating the newsletter subscription status redirects the user back to My Account page,  but fails to  display any success or confirmation message to cofirm the update.",fail
+TC_SEC_008,Verify Contact Us Form Submission,Verify that users can send inquiries to the store admin via the Contact Us page.,"User navigates to the ""Contact Us"" page from the footer.","1. Enter Name, Email, and an inquiry text.
+2. Click ""Submit"".","Name = Ahmed | Email = ahmed@gmail.com | Enquiry = Hello, I want to ask about shipping rates.", Medium,"The inquiry is sent, and the page redirects to a success screen with a ""Continue"" button.","The inquiry is submitted successfully, and the system correctly redirects to the success page. and show ""Your enquiry has been successfully sent to the store owner!"". clicking the ""continue"" button safely navigates the user back to Home page as expected.",pass
+TC_SEC_009,Verify Password Change Functionality,Verify that a logged-in user can change their account password from the dashboard.,"User is logged in and on the ""My Account"" page.","1. Click on ""Change your password"".
+2. Enter a new password in both fields (Password and Password Confirm).
+3. Click ""Continue"".",New Password =12345, Medium,"The password is updated successfully, and a success banner appears on the account page.","The password is changed successfully, but the system fails to display any success or confirmation message to the user upon redirection",fail
+TC_SEC_010,Verify Password Complexity Validation Enforcements,"Ensure that the system rejects weak, simple, or sequential passwords to maintain user account security","User is registered and logged into the system, User is on the ""Change Password"" page","1. Navigate to My Account - Change Password.
+2. Enter a very weak password in the new password fields.
+3. Click on the ""Continue"" button.
+4. Observe the system behavior and check for validation errors.",New Password: 11111,High,"The system must reject the weak password, prevent the update, and display a validation error message requiring a stronger password configuration.","The system lacks password complexity validation, allowing the update of highly weak passwords without triggering any system-level restrictions or error messages.",fail
+TC_SEC_011,Verify Global Currency Switching Impact on Prices,Verify that changing the site's currency from the header updates all product prices on the site automatically.,User is on the home page or any listing page.,"1. Locate the ""Currency"" dropdown in the top left header.
+2. Change the currency from US Dollar ($) to Euro (€) or Pound Sterling (£).
+3. Observe the displayed product prices.",Currency change to EUR or GBP., Medium,"All product price symbols change instantly, and the numerical values are recalculated based on the exchange rate.",The currency switching mechanism works perfectly. Changing the currency automatically updates and display all product price across the site with the correct currency symbol and conversion rate without any delay.,pass
